@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo de Recreación y Deporte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.7;
+            padding: 20px;
+            font-size: 15px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #e8ecf0;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content {
+            padding: 45px;
+        }
+        
+        section {
+            margin-bottom: 45px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f1f3f4;
+            position: relative;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -45px;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            padding-left: 12px;
+            border-left: 3px solid #667eea;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        h4 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin: 20px 0 12px 0;
+            font-weight: 600;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        h4::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 12px;
+        }
+        
+        p {
+            text-align: justify;
+            margin-bottom: 16px;
+            color: #2c3e50;
+            line-height: 1.8;
+            text-indent: 0;
+        }
+        
+        .termino {
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+        
+        .termino::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-top: 20px solid #667eea;
+        }
+        
+        .termino strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+            position: relative;
+        }
+        
+        li::marker {
+            color: #667eea;
+        }
+        
+        li strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .evento {
+            margin: 30px 0;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
+            border: 1px solid #ffd4a3;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(255, 212, 163, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .evento::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa726, #42a5f5, #66bb6a);
+        }
+        
+        .evento h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ffd4a3;
+            background: none;
+            border-left: none;
+            padding-left: 0;
+        }
+        
+        /* Estilo especial para Carrusel - Destacado y profesional */
+        .carrusel-destacado {
+            background: linear-gradient(135deg, #f0f4ff 0%, #e1e8ff 100%);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 30px;
+            margin: 35px 0;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15);
+        }
+        
+        .carrusel-destacado::before {
+            content: "★ Evento que implementare a mis compañeros ★";
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .carrusel-destacado h3 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            background: none;
+            border-left: none;
+            padding-left: 0;
+            text-align: center;
+        }
+        
+        .ejercicio-practico {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+        }
+        
+        .ejercicio-practico h4 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #667eea;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, transparent 50%, rgba(102, 126, 234, 0.1) 100%);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .paso {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8f2ff 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+            position: relative;
+        }
+        
+        .paso::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .paso:nth-child(1)::before { content: '1'; color: white; font-weight: bold; }
+        .paso:nth-child(2)::before { content: '2'; color: white; font-weight: bold; }
+        .paso:nth-child(3)::before { content: '3'; color: white; font-weight: bold; }
+        .paso:nth-child(4)::before { content: '4'; color: white; font-weight: bold; }
+        
+        .paso strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            padding-right: 50px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);
+            position: relative;
+        }
+        
+        .info-box::before {
+            content: 'ℹ';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #4caf50;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: none;
+            }
+            
+            header {
+                background-color: white;
+                color: black;
+                border-bottom: 2px solid black;
+            }
+            
+            header h1 {
+                color: black;
+            }
+        }
+        
+        /* Estilos para imágenes mejorados */
+        .image-container {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            position: relative;
+        }
+        
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin: 15px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #ffffff;
+        }
+        
+        .image-container img:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        
+        .header-image {
+            width: 100%;
+            max-width: 500px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 3px solid #ffffff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-radius: 16px;
+            pointer-events: none;
+        }
+        
+        .carousel-station-image {
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px auto;
+            display: block;
+            border: 2px solid #ffffff;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-station-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Mejoras para listas */
+        ol {
+            counter-reset: item;
+        }
+        
+        ol li {
+            display: block;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        ol li::before {
+            content: counter(item);
+            counter-increment: item;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Mejoras para elementos de información */
+        .termino p {
+            margin-bottom: 0;
+            padding-right: 20px;
+        }
+        
+        /* Efectos de transición suaves */
+        .evento, .termino, .paso, .info-box {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .evento:hover, .termino:hover, .paso:hover, .info-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Diseño responsive mejorado */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                font-size: 14px;
+            }
+            
+            .container {
+                border-radius: 8px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+            
+            h2 {
+                font-size: 20px;
+                margin-bottom: 20px;
+                padding-bottom: 8px;
+            }
+            
+            h3 {
+                font-size: 16px;
+                margin-top: 20px;
+                margin-bottom: 12px;
+                padding: 10px 12px;
+            }
+            
+            h4 {
+                font-size: 15px;
+                margin: 15px 0 10px 0;
+            }
+            
+            section {
+                margin-bottom: 35px;
+                padding-bottom: 25px;
+            }
+            
+            section::before {
+                left: -20px;
+                width: 3px;
+            }
+            
+            h2::before {
+                left: -12px;
+                width: 6px;
+                height: 6px;
+            }
+            
+            .termino, .evento, .paso, .info-box {
+                margin: 20px 0;
+                padding: 15px;
+            }
+            
+            .carrusel-destacado {
+                padding: 20px;
+                margin: 25px 0;
+            }
+            
+            .carrusel-destacado::before {
+                left: 20px;
+                padding: 6px 15px;
+                font-size: 11px;
+            }
+            
+            .ejercicio-practico {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            
+            .image-container {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .header-image {
+                height: 180px;
+                margin: 20px 0;
+            }
+            
+            .carousel-station-image {
+                height: 160px;
+                margin: 10px auto;
+            }
+            
+            ul, ol {
+                margin-left: 20px;
+            }
+            
+            ol li {
+                padding-left: 25px;
+                margin-bottom: 10px;
+            }
+            
+            ol li::before {
+                width: 20px;
+                height: 20px;
+                font-size: 11px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            header h1 {
+                font-size: 18px;
+            }
+            
+            h2 {
+                font-size: 18px;
+            }
+            
+            h3 {
+                font-size: 15px;
+            }
+            
+            .termino strong {
+                font-size: 14px;
+            }
+            
+            .paso strong {
+                font-size: 14px;
+                padding-right: 40px;
+            }
+            
+            .paso::before {
+                width: 25px;
+                height: 25px;
+                top: 8px;
+                right: 10px;
+            }
+        }
+        
+        /* Mejoras de accesibilidad */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* Estilos de impresión optimizados */
+        @media print {
+            body {
+                background: white;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                border-radius: 0;
+            }
+            
+            header {
+                background: #f8f9fa !important;
+                color: #000 !important;
+                border-bottom: 2px solid #000;
+            }
+            
+            .image-container {
+                background: white !important;
+                border: 1px solid #ccc;
+            }
+            
+            .evento, .termino, .paso, .info-box, .carrusel-destacado {
+                background: white !important;
+                border: 1px solid #ccc;
+                box-shadow: none;
+            }
+            
+            .carrusel-destacado::before {
+                background: #000 !important;
+                color: white !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TRABAJO DE RECREACIÓN Y DEPORTE</h1>
+            <div class="image-container">
+                <img src="https://universidadeuropea.com/resources/media/images/actividades-fisicas-recreativas-800x450.width-640.jpg" alt="Deportes y recreación - Actividades físicas diversas" class="header-image">
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Sección 1: Definición de Términos -->
+            <section>
+                <h2>1. DEFINICIÓN DE TÉRMINOS FUNDAMENTALES</h2>
+                
+                <div class="termino">
+                    <strong>RECREACIÓN</strong>
+                    <div class="image-container">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2X0vNSe_WSGIWeab_jgLnnfLxjK5cg8xc4JqaLGMlKoClzowbaZPDxMzAZUA0ZdbTcqXGyKBBZdF3Ugy9KRm9gc5HCrmIBvSFWWp_wu6X5TbNxqlSlSuxVX5YwLuMfyOAC0RsrvClcZZk/s1600/foto-recreacion.jpg" alt="Actividades recreativas al aire libre" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>La recreación constituye el conjunto de actividades que las personas realizan durante su tiempo libre con el propósito fundamental de obtener satisfacción, descanso y desarrollo integral. Estas actividades, que pueden ser de naturaleza física, cultural, social o artística, contribuyen significativamente al bienestar psicofísico del individuo, promoviendo la salud, facilitando la socialización y favoreciendo el desarrollo personal en sus múltiples dimensiones.</p>
+                </div>
+                
+                <div class="termino">
+                    <strong>JUEGO</strong>
+                    <div class="image-container">
+                        <img src="https://universidadeuropea.com/resources/media/images/juego-educacion-infantil-1200x630.original.jpg" alt="Niños jugando al aire libre" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>El juego se define como una actividad libre, espontánea y placentera que se ejecuta sin perseguir necesariamente un fin utilitario específico. Representa un elemento fundamental en el desarrollo humano, particularmente durante la infancia, pues facilita los procesos de exploración, aprendizaje, socialización y expresión emocional. El juego puede manifestarse de forma individual o colectiva, con estructura definida o de manera libre, constituyendo una forma natural e intrínseca de aprendizaje.</p>
+                </div>
+                
+                <div class="termino">
+                    <strong>OCIO</strong>
+                    <div class="image-container">
+                        <img src="https://www.centroreinasofia.org/wp-content/uploads/2019/11/ociotic.png" alt="Persona relajándose y disfrutando del ocio" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>El ocio comprende el tiempo liberado de obligaciones laborales, académicas o domésticas que el individuo dedica voluntariamente a actividades de su propia elección. Este tiempo se caracteriza por permitir el descanso, la contemplación y el desarrollo personal, facilitando la recuperación física y mental del individuo, así como la realización de actividades creativas y recreativas que contribuyen a su realización personal.</p>
+                </div>
+                
+                <div class="termino">
+                    <strong>LÚDICA</strong>
+                    <div class="image-container">
+                        <img src="https://s1.significados.com/foto/ludico-og.jpg?class=ogImageSquare" alt="Actividades lúdicas y divertidas" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>La lúdica hace referencia a la dimensión del desarrollo humano que se relaciona directamente con el juego, la diversión y el entretenimiento. Se manifiesta como una actitud y predisposición hacia actividades placenteras que generan gozo, estimulan la creatividad y facilitan el aprendizaje significativo. La dimensión lúdica trasciende el juego mismo, pudiendo estar presente en cualquier actividad humana cuando esta se realiza con placer, espontaneidad y disfrute.</p>
+                </div>
+                
+                <div class="termino">
+                    <strong>TIEMPO LIBRE</strong>
+                    <div class="image-container">
+                        <img src="https://www.genesis.es/sites/genesises/files/78_tiempo_libre_l%20trabajo_1183657530.webp" alt="Personas disfrutando de su tiempo libre" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>El tiempo libre se define como el período temporal disponible una vez cumplidas las obligaciones laborales, académicas y las responsabilidades personales básicas. Constituye un espacio temporal destinado a actividades voluntarias de recreación, descanso o desarrollo personal, donde el individuo ejerce plena libertad de elección sobre las actividades a realizar, sin presiones externas ni obligaciones impuestas.</p>
+                </div>
+            </section>
+            
+            <!-- Sección 2: Ficha Técnica -->
+            <section>
+                <h2>2. FICHA TÉCNICA EN EL CONTEXTO DEPORTIVO</h2>
+                
+                <div class="image-container">
+                    <img src="https://adars.org.do/wp-content/uploads/2024/10/El-Deporte-como-Prevencion-de-Enfermedades.webp" alt="Documentación y planificación deportiva" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                </div>
+                
+                <h3>Definición y Propósito</h3>
+                <p>Una ficha técnica constituye un documento estructurado que recopila de manera sistemática y organizada toda la información relevante concerniente a una actividad física, ejercicio, deporte o juego específico. Su función principal es servir como instrumento de referencia rápida y precisa para instructores, docentes, entrenadores y participantes involucrados en la actividad.</p>
+                
+                <h3>Metodología de Elaboración</h3>
+                <ol>
+                    <li>Identificación precisa de la actividad objeto de documentación</li>
+                    <li>Recopilación exhaustiva de información mediante observación directa y práctica sistemática</li>
+                    <li>Organización de la información en categorías claramente definidas</li>
+                    <li>Redacción con lenguaje técnico, conciso y preciso</li>
+                    <li>Inclusión de elementos gráficos, diagramas o esquemas cuando sea pertinente</li>
+                    <li>Revisión, validación y actualización periódica de la información</li>
+                </ol>
+                
+                <h3>Elementos Constitutivos de una Ficha Técnica Deportiva</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>Denominación de la actividad:</strong> Nombre específico y descriptivo del ejercicio o juego</li>
+                        <li><strong>Objetivos:</strong> Propósito general y objetivos específicos a alcanzar</li>
+                        <li><strong>Participantes:</strong> Número mínimo y máximo de participantes, rango etario recomendado</li>
+                        <li><strong>Duración:</strong> Tiempo estimado de ejecución de la actividad</li>
+                        <li><strong>Recursos materiales:</strong> Inventario completo de implementos y equipamiento necesario</li>
+                        <li><strong>Espacio físico:</strong> Características, tipo y dimensiones del área requerida</li>
+                        <li><strong>Desarrollo metodológico:</strong> Descripción detallada y secuencial de la actividad</li>
+                        <li><strong>Reglamentación:</strong> Normas básicas, restricciones y posibles variantes</li>
+                        <li><strong>Beneficios:</strong> Aspectos físicos, cognitivos, emocionales y sociales que desarrolla</li>
+                        <li><strong>Medidas de seguridad:</strong> Precauciones, contraindicaciones y protocolos de seguridad</li>
+                        <li><strong>Variantes y adaptaciones:</strong> Modificaciones según contexto y población</li>
+                        <li><strong>Criterios de evaluación:</strong> Indicadores para medir el cumplimiento de objetivos</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <!-- Sección 3: Eventos Recreo-deportivos -->
+            <section>
+                <h2>3. EVENTOS RECREO-DEPORTIVOS</h2>
+                
+                <div class="evento">
+                    <h3>JUEGOS COOPERATIVOS</h3>
+                    <div class="image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-A0E7PEoub7jJWOXyaDtHIwS0nO0W65Ijbw&s" alt="Equipos trabajando juntos en actividades cooperativas" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Los juegos cooperativos son actividades lúdicas estructuradas donde la totalidad de los participantes colaboran activamente para alcanzar un objetivo común, eliminando el componente competitivo tradicional. Estas actividades promueven valores fundamentales como la solidaridad, el trabajo en equipo, la comunicación efectiva y la inclusión social. El éxito se mide exclusivamente por el logro colectivo, reforzando la interdependencia positiva entre los participantes.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>CARRERA DE OBSERVACIÓN</h3>
+                    <div class="image-container">
+                        <img src="https://www.cundinamarca.gov.co/wcm/connect/a92e846c-f899-4793-9614-7c2d27a47be1/3.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-a92e846c-f899-4793-9614-7c2d27a47be1-m1HhlVl" alt="Carrera de observación y orientación" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Actividad que integra el desplazamiento físico con el desarrollo de capacidades cognitivas de observación y análisis. Los participantes deben completar un recorrido predeterminado mientras identifican elementos específicos, resuelven problemas o completan tareas que requieren atención visual y procesamiento de información. Esta modalidad desarrolla simultáneamente la condición física, la capacidad de observación, la memoria visual y las habilidades de orientación espacial.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>FESTIVALES RECREATIVOS Y/O DEPORTIVOS</h3>
+                    <div class="image-container">
+                        <img src="https://fonmixtoprodeporte.gov.co/wp-content/uploads/2023/10/1.PORTADA-NOTICIA-FESTIVALES-RD-SAN-ANDRES.jpeg" alt="Festival deportivo con múltiples actividades" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Eventos de carácter masivo que integran de manera coordinada múltiples actividades recreativas, deportivas y culturales en un espacio y tiempo determinados. Estos festivales incluyen típicamente exhibiciones, competencias de carácter amistoso, talleres formativos y presentaciones artísticas. Su objetivo fundamental es promover la participación comunitaria activa, celebrar la diversidad de expresiones deportivas y fomentar la adopción de estilos de vida saludables.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>JUEGOS MÚLTIPLES</h3>
+                    <div class="image-container">
+                        <img src="https://i.ytimg.com/vi/wLNHzddixBg/maxresdefault.jpg" alt="Múltiples estaciones de juegos y actividades" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Sistema de organización de actividades que permite la realización simultánea o secuencial de diferentes tipos de juegos en una misma sesión. Esta modalidad incluye estaciones diversificadas que trabajan distintas capacidades: habilidad motriz, destreza, velocidad, coordinación y resistencia. Su estructura variada mantiene elevados los niveles de interés y motivación de los participantes.</p>
+                </div>
+                
+                <!-- CARRUSEL DESTACADO -->
+                <div class="carrusel-destacado">
+                    <h3>CARRUSEL</h3>
+                    
+                    <div class="image-container">
+                        <img src="https://img.freepik.com/vector-premium/conjunto-personas-deportivas-coleccion-diferentes-actividades-deportivas-atleta-profesional-haciendo-deporte-baloncesto-futbol-karate-tenis-sprint-gimnasia-levantador-pesas-ilustracion-vector-estilo-dibujos-animados_177886-443.jpg" alt="Carrusel de actividades deportivas con estaciones" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    
+                    <h4>Definición</h4>
+                    <p>El carrusel recreativo constituye una metodología organizativa de actividades físico-deportivas caracterizada por la rotación sistemática y programada de los participantes a través de diferentes estaciones o bases de trabajo. Cada estación presenta una actividad específica con objetivos particulares, y los grupos de participantes van transitando de una a otra en intervalos de tiempo predeterminados, garantizando que todos experimenten la totalidad de las propuestas.</p>
+                    
+                    <h4>Objetivos Fundamentales</h4>
+                    <ul>
+                        <li>Maximizar los niveles de participación activa de todos los involucrados</li>
+                        <li>Proporcionar variedad de experiencias motrices en tiempo optimizado</li>
+                        <li>Desarrollar múltiples capacidades y competencias de forma integral</li>
+                        <li>Mantener elevados los niveles de motivación y compromiso</li>
+                        <li>Facilitar la organización de grupos numerosos en espacios limitados</li>
+                        <li>Permitir la evaluación simultánea de diferentes capacidades</li>
+                    </ul>
+                    
+                    <h4>Características Metodológicas</h4>
+                    <ul>
+                        <li>Rotación sistemática y previamente planificada</li>
+                        <li>Temporización específica para cada estación (generalmente entre 5 y 15 minutos)</li>
+                        <li>Sistema de señalización clara para los cambios (auditiva o visual)</li>
+                        <li>Complementariedad entre las actividades propuestas</li>
+                        <li>Adaptabilidad a diferentes contextos y recursos disponibles</li>
+                        <li>Progresión en la complejidad de las tareas</li>
+                    </ul>
+                    
+                    <h4>Aplicaciones Prácticas en Educación Física</h4>
+                    <div class="info-box">
+                        <p><strong>• Carrusel de Capacidades Físicas:</strong> Estaciones diferenciadas para trabajar fuerza, velocidad, resistencia y flexibilidad de manera específica.</p>
+                        <p><strong>• Carrusel de Fundamentos Deportivos:</strong> Cada estación dedica a la práctica de gestos técnicos de diferentes deportes.</p>
+                        <p><strong>• Carrusel de Habilidades Motrices Básicas:</strong> Desarrollo de patrones fundamentales de movimiento: locomoción, manipulación y estabilidad.</p>
+                        <p><strong>• Carrusel Temático Cultural:</strong> Estaciones que representan juegos y actividades tradicionales de diferentes culturas.</p>
+                    </div>
+                    
+                    <div class="ejercicio-practico">
+                        <h4>PROPUESTA PRÁCTICA: "CARRUSEL DE DESARROLLO INTEGRAL"</h4>
+                        
+                        <p><strong>Objetivo General:</strong> Desarrollar capacidades físicas básicas y habilidades motrices mediante estaciones diversificadas de trabajo.</p>
+                        
+                        <p><strong>Datos Técnicos:</strong></p>
+                        <ul>
+                            <li>Participantes: 18 estudiantes organizados en 4 grupos</li>
+                            <li>Duración total: 15 minutos</li>
+                            <li>Materiales: Conos, balones diversos, aros, cuerdas, colchonetas</li>
+                        </ul>
+                        
+                        <div class="paso">
+                            <strong>ESTACIÓN 1: DESARROLLO DE LA VELOCIDAD Y AGILIDAD</strong>
+                            <div class="image-container">
+                                <img src="https://blog.marti.mx/wp-content/uploads/2023/05/entrenamiento-de-agilidad-jpeg.webp" alt="Ejercicios de velocidad y agilidad con conos" class="carousel-station-image">
+                            </div>
+                            <p>Circuito de velocidad con cambios de dirección, utilizando conos dispuestos en diferentes formaciones. Incluye ejercicios de aceleración, desaceleración, cambios de dirección a 45° y 90°, y ejercicios de reacción ante estímulos visuales y auditivos. Finaliza con relevos de velocidad en distancias cortas.</p>
+                        </div>
+                        
+                        <div class="paso">
+                            <strong>ESTACIÓN 2: COORDINACIÓN Y PRECISIÓN</strong>
+                            <div class="image-container">
+                                <img src="https://www.hsnstore.com/blog/wp-content/uploads/2013/09/deporte.jpg" alt="Ejercicios de coordinación y precisión" class="carousel-station-image">
+                            </div>
+                            <p>Actividades de coordinación óculo-manual y óculo-pedal. Incluye lanzamientos a objetivos fijos y móviles, recepción de implementos a diferentes alturas y velocidades, conducción de balón sorteando obstáculos, y ejercicios de coordinación bilateral con implementos diversos.</p>
+                        </div>
+                        
+                        <div class="paso">
+                            <strong>ESTACIÓN 3: FUERZA Y RESISTENCIA MUSCULAR</strong>
+                            <div class="image-container">
+                                <img src="https://www.salud.mapfre.es/wp-content/uploads/2023/05/fuerza-y-resistencia.jpg" alt="Ejercicios de fuerza y resistencia muscular" class="carousel-station-image">
+                            </div>
+                            <p>Trabajo de fortalecimiento muscular adaptado a la edad. Comprende ejercicios isométricos (plancha, sentadilla estática), ejercicios dinámicos (flexiones modificadas, abdominales, sentadillas), trabajo con el propio peso corporal y ejercicios de resistencia muscular localizada.</p>
+                        </div>
+                        
+                        <div class="paso">
+                            <strong>ESTACIÓN 4: EQUILIBRIO Y FLEXIBILIDAD</strong>
+                            <div class="image-container">
+                                <img src="https://kirolklub.com/wp-content/uploads/2019/06/portada-1-1280x633.jpg" alt="Ejercicios de equilibrio y flexibilidad" class="carousel-station-image">
+                            </div>
+                            <p>Desarrollo del equilibrio estático y dinámico mediante desplazamientos sobre superficies reducidas, mantenimiento de posturas en apoyo unipodal, ejercicios de flexibilidad activa y pasiva, y actividades de conciencia corporal y control postural.</p>
+                        </div>
+                        
+                        <h4>Protocolo de Implementación</h4>
+                        <ol>
+                            <li>Conformación de grupos homogéneos mediante criterios preestablecidos</li>
+                            <li>Asignación de identificación visual para cada grupo</li>
+                            <li>Explicación detallada de objetivos, reglas y sistema de rotación</li>
+                            <li>Calentamiento general dirigido (5 minutos)</li>
+                            <li>Ubicación de cada grupo en su estación inicial</li>
+                            <li>Desarrollo de las rotaciones según temporización establecida</li>
+                            <li>Vuelta a la calma con ejercicios de flexibilidad y respiración (5 minutos)</li>
+                            <li>Retroalimentación grupal sobre la experiencia</li>
+                        </ol>
+                        
+                        <p><strong>Criterios de Evaluación:</strong> Nivel de participación activa, calidad en la ejecución de movimientos, capacidad de trabajo en equipo, respeto por las normas establecidas, y mejora observable en las capacidades trabajadas.</p>
+                    </div>
+                </div>
+                
+                <div class="evento">
+                    <h3>OLIMPIADAS</h3>
+                    <div class="image-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN58k0eQFF2VP9tdb2XsCj7w46dIiTYjQ63JNtdC_10b-9BruTuyO0PmIfAUCGV6HzlKg&usqp=CAU" alt="Eventos deportivos tipo olimpiadas escolares" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Eventos deportivos de carácter competitivo que integran múltiples disciplinas deportivas en un formato inspirado en los Juegos Olímpicos. Estas competencias pueden adaptarse al contexto escolar o comunitario, incluyendo tanto deportes tradicionales como modalidades alternativas. Promueven valores olímpicos fundamentales: excelencia, amistad y respeto, incluyendo ceremonias protocolarias y sistemas de reconocimiento.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>SECUENCIALES</h3>
+                    <div class="image-container">
+                        <img src="https://bogota.gov.co/sites/default/files/eventos/2025-04/celebracion-30-anos-recreovia.png" alt="Actividades secuenciales y progresivas" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Modalidad organizativa donde las actividades se estructuran en una secuencia lógica y progresiva, donde cada fase prepara específicamente para la siguiente. Los participantes deben completar una serie predeterminada de pruebas o desafíos en orden específico, con complejidad creciente. Esta estructura desarrolla capacidades de planificación, persistencia y superación progresiva de desafíos.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>JUEGOS PREDEPORTIVOS</h3>
+                    <div class="image-container">
+                        <img src="https://formainfancia.com/wp-content/uploads/juegos-predeportivos-beneficios.jpg" alt="Juegos predeportivos para niños" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Actividades lúdicas que incorporan elementos técnicos y tácticos simplificados de deportes formales, sirviendo como fase preparatoria para la práctica deportiva especializada. Estas actividades adaptan reglamentos, espacios y materiales para facilitar el aprendizaje progresivo de gestos técnicos y comprensión táctica, manteniendo el componente lúdico como elemento motivador principal.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>GINKANAS O YINCANAS</h3>
+                    <div class="image-container">
+                        <img src="https://i.ytimg.com/vi/1I8_x3R4pPs/sddefault.jpg" alt="Ginkanas y actividades de equipo" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Competencia por equipos que integra pruebas de naturaleza diversa: físicas, cognitivas y de habilidad, organizadas en un recorrido con múltiples desafíos. Incluye elementos como búsquedas dirigidas, resolución de acertijos, pruebas de destreza física y actividades sorpresa. Esta modalidad desarrolla la estrategia grupal, comunicación efectiva, resolución creativa de problemas y condición física de manera lúdica.</p>
+                </div>
+                
+                <div class="evento">
+                    <h3>JUEGOS TRADICIONALES Y DE LA CALLE</h3>
+                    <div class="image-container">
+                        <img src="https://escoles.fundesplai.org/wp-content/uploads/2023/05/JOCS-TRADICIONALS-fundesplai.jpeg" alt="Juegos tradicionales y de la calle" style="max-width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p>Manifestaciones lúdicas transmitidas generacionalmente que constituyen parte del patrimonio cultural inmaterial de las comunidades. Incluyen actividades como rayuela, escondidas, stop, ponchados, trompo, canicas y elástico, entre otros. Estos juegos preservan tradiciones culturales, requieren recursos materiales mínimos, fomentan la socialización espontánea y pueden desarrollarse en espacios diversos, constituyendo herramientas fundamentales para la preservación de la identidad cultural y la promoción de la actividad física accesible.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
